@@ -129,22 +129,6 @@
       "description": "any thing",
       "fav": true,
       "category": "men clothes"
-    },
-    {
-      "id": "27c9",
-      "name": "",
-      "price": 0,
-      "category": "Men Clothes",
-      "description": null,
-      "image": null
-    },
-    {
-      "id": "e772",
-      "name": "ddd",
-      "price": 10,
-      "category": "Woman Clothes",
-      "description": "dddd",
-      "image": null
     }
   ]
 }
