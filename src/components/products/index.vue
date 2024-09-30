@@ -65,6 +65,7 @@
 
 <script>
 import Pagination from '@/components/pagination.vue';
+import { mapGetters } from "vuex";
 
 export default {
   name: 'products-index',
@@ -73,141 +74,6 @@ export default {
   },
   data() {
     return {
-      products:[
-          {
-            "id":1,
-            "name":"blose",
-            "price":500,
-            "image":"images/products/blose.png",
-
-            "vendor":{
-              "name":"nasagon",
-              "image":"images/vendors/nasagon.svg"
-            },
-            "description":"any thing",
-            "fav":false,
-            "category":"woman clothes"
-          },
-          {
-            "id":2,
-            "name":"jaket",
-            "image":"images/products/jaket.png",
-
-            "price":500,
-            "vendor":{
-              "name":"nasagon",
-              "image":"images/vendors/nasagon.svg"
-            },
-            "description":"any thing",
-
-            "fav":true,
-            "category":"woman clothes"
-          },
-          {
-            "id":3,
-            "name":"switer",
-            "price":500,
-            "image":"/images/products/switer.png",
-            "vendor":{
-              "name":"nasagon",
-              "image":"images/vendors/nasagon.svg"
-            },
-            "description":"any thing",
-            "fav":true,
-            "category":"men clothes"
-          },
-          {
-            "id":4,
-            "name":"black_jaket",
-            "price":500,
-            "image":"/images/products/jaket_black.png",
-            "vendor":{
-              "name":"nasagon",
-              "image":"images/vendors/nasagon.svg"
-            },
-            "description":"any thing",
-            "fav":true,
-            "category":"men clothes"
-          },
-          {
-            "id":5,
-            "name":"T-Shirt",
-            "price":500,
-            "image":"/images/products/t-shirt.webp",
-            "vendor":{
-              "name":"nasagon",
-              "image":"images/vendors/nasagon.svg"
-            },
-            "description":"any thing",
-            "fav":true,
-            "category":"men clothes"
-          },
-          {
-            "id":6,
-            "name":"Black T-Shirt",
-            "price":500,
-            "image":"/images/products/t-shirt-black.webp",
-            "vendor":{
-              "name":"nasagon",
-              "image":"images/vendors/nasagon.svg"
-            },
-            "description":"any thing",
-            "fav":true,
-            "category":"men clothes"
-          },
-          {
-            "id":7,
-            "name":"White T-Shirt",
-            "price":4,
-            "image":"/images/products/t-shirt-white.webp",
-            "vendor":{
-              "name":"nasagon",
-              "image":"images/vendors/nasagon.svg"
-            },
-            "description":"any thing",
-            "fav":true,
-            "category":"men clothes"
-          },
-          {
-            "id":8,
-            "name":"black_jaket",
-            "price":1,
-            "image":"/images/products/jaket_black.png",
-            "vendor":{
-              "name":"nasagon",
-              "image":"images/vendors/nasagon.svg"
-            },
-            "description":"any thing",
-            "fav":true,
-            "category":"men clothes"
-          },
-          {
-            "id":9,
-            "name":"T-Shirt Yellow",
-            "price":3,
-            "image":"/images/products/t-shirt-yellow.webp",
-            "vendor":{
-              "name":"nasagon",
-              "image":"images/vendors/nasagon.svg"
-            },
-            "description":"any thing",
-            "fav":true,
-            "category":"men clothes"
-          },
-          {
-            "id":10,
-            "name":"jeans",
-            "price":200,
-            "image":"/images/products/jeans.jpg",
-            "vendor":{
-              "name":"nasagon",
-              "image":"images/vendors/nasagon.svg"
-            },
-            "description":"any thing",
-            "fav":true,
-            "category":"men clothes"
-          },
-        ],
       search_term: '',
       currentPage: 1,
       itemsPerPage: 4,
@@ -215,25 +81,39 @@ export default {
     };
   },
   computed: {
-    filteredProducts: {
-      set(val) {
-        this.products = val
-      },
-      get() {
-        return this.products.filter((prod) =>
-        prod.name.toLowerCase().includes(this.search_term.toLowerCase())
-        ||  prod.category.toLowerCase().includes(this.search_term.toLowerCase()) 
-      );
-      }
+    ...mapGetters({ products: "products" }),
 
+    filteredProducts() {
+      return this.products.filter((prod) =>
+        prod.name.toLowerCase().includes(this.search_term.toLowerCase()) ||
+        prod.category.toLowerCase().includes(this.search_term.toLowerCase())
+      );
     },
+
     paginatedProducts() {
       const start = (this.currentPage - 1) * this.itemsPerPage;
-      return this.filteredProducts.slice(start, start + this.itemsPerPage);
+      const sortedProducts = [...this.filteredProducts]; // Create a copy for sorting
+      
+      if (this.sortBy === 'A-Z') {
+        sortedProducts.sort((a, b) => (a.name.toLowerCase() > b.name.toLowerCase()) ? 1 : -1);
+      } else if (this.sortBy === 'Z-A') {
+        sortedProducts.sort((a, b) => (a.name.toLowerCase() < b.name.toLowerCase()) ? 1 : -1);
+      } else if (this.sortBy === 'Price: Low to High') {
+        sortedProducts.sort((a, b) => a.price - b.price);
+      } else if (this.sortBy === 'Price: High to Low') {
+        sortedProducts.sort((a, b) => b.price - a.price);
+      }
+  
+      return sortedProducts.slice(start, start + this.itemsPerPage);
     },
+
     pageCount() {
       return Math.ceil(this.filteredProducts.length / this.itemsPerPage);
     },
+  },
+
+  created: async function () {
+    await this.$store.dispatch("index");
   },
   methods: {
     searchProduct() {
@@ -250,21 +130,14 @@ export default {
     },
   },
   watch: {
-  sortBy: {
-    handler: function (val) {
-      if (val === 'A-Z') {
-        this.filteredProducts.sort((a, b) => (a.name.toLowerCase() > b.name.toLowerCase()) ? 1 : -1);
-      } else if (val === 'Z-A') {
-        this.filteredProducts.sort((a, b) => (a.name.toLowerCase() < b.name.toLowerCase()) ? 1 : -1);
-      } else if (val === 'Price: Low to High') {
-        this.filteredProducts.sort((a, b) => a.price - b.price);
-      } else if (val === 'Price: High to Low') {
-        this.filteredProducts.sort((a, b) => b.price - a.price);
-      }
-    },
-    immediate: true // This will trigger the handler immediately on component mount
+  sortBy(val) {
+    if(val) {
+      this.currentPage = 1; // Reset to the first page on sort change
+
+    }
   }
 }
+
 };
 </script>
 
@@ -313,7 +186,7 @@ body {
 }
 .search-cont {
  /* width: 528.68px;*/
-  height: 44px;
+  max-height: 44px;
   /*top: 85px;*/
   gap: 0px;
   border-radius: 4px ;
@@ -324,7 +197,7 @@ body {
 
 }
 .select-cont  {
-  height: 44px;
+  max-height: 44px;
   gap: 0px;  
   border: 1px solid #E5E5E5;
   padding: 11px 13px 11px 13px;

@@ -6,6 +6,18 @@ module.exports = {
     container: {
       center: true,
     },
+    extend: {
+      fontFamily:{
+        bodyFont: [
+          'Lexend Deca'
+        ]
+      },
+      screens: {
+        'xs': '<500px',
+        // => @media (min-width: 992px) { ... }
+      },
+
+    },
   },
   variants: {
     extend: {},

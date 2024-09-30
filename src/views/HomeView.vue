@@ -1,8 +1,8 @@
 <template>
   <div class="home">
-    <products-index @show-create-popup="showPopup = true"></products-index>
+    <products-index v-if="!showPopup" @show-create-popup="showPopup = true"></products-index>
     <pop-up v-if="showPopup" @close-popup="showPopup = false">
-      <create-product @close-create-popup="showPopup = false"></create-product>
+      <create-product @add-product="addProduct($event)"></create-product>
     </pop-up>
   </div>
 </template>
@@ -22,6 +22,12 @@ export default {
   methods:{
     toggleCreatePopup() {
       this.showPopup = !this.showPopup
+    },
+    async addProduct(product) {
+      await this.$store.dispatch("addProduct", product).then(()=>{
+
+      })
+      this.showPopup = false
     }
   },
   components: {

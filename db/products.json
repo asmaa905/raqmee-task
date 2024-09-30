@@ -1,71 +1,150 @@
-{ "products":{
-    "1":{
-        "id":1,
-        "name":"Jaket",
-        "price":500,
-        "image":"images/products/jaket.jpg",
-        "vendor":{
-          "name":"nasagon",
-          "image":"images/vendors/nasagon.svg"
-        },
-        "description":"any thing",
-        "fav":false,
-        "category":"woman clothes"
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "blose",
+      "price": 500,
+      "image": "images/products/blose.png",
+      "vendor": {
+        "name": "nasagon",
+        "image": "images/vendors/nasagon.svg"
+      },
+      "description": "any thing",
+      "fav": false,
+      "category": "woman clothes"
     },
-    "2":{
-    "id":2,
-    "name":"blose",
-    "price":500,
-    "image":"images/products/blose.svg",
-    "vendor":{
-        "name":"nasagon",
-        "image":"images/vendors/nasagon.svg"
+    {
+      "id": 2,
+      "name": "jaket",
+      "image": "images/products/jaket.png",
+      "price": 500,
+      "vendor": {
+        "name": "nasagon",
+        "image": "images/vendors/nasagon.svg"
+      },
+      "description": "any thing",
+      "fav": true,
+      "category": "woman clothes"
     },
-    "description":"any thing",
-
-    "fav":true,
-    "category":"woman clothes"
+    {
+      "id": 3,
+      "name": "switer",
+      "price": 500,
+      "image": "/images/products/switer.png",
+      "vendor": {
+        "name": "nasagon",
+        "image": "images/vendors/nasagon.svg"
+      },
+      "description": "any thing",
+      "fav": true,
+      "category": "men clothes"
     },
-    "3":{
-    "id":1,
-    "name":"Jaket",
-    "price":500,
-    "image":"/images/products/jaket.jpg",
-    "vendor":{
-        "name":"nasagon",
-        "image":"images/vendors/nasagon.svg"
+    {
+      "id": 4,
+      "name": "black_jaket",
+      "price": 500,
+      "image": "/images/products/jaket_black.png",
+      "vendor": {
+        "name": "nasagon",
+        "image": "images/vendors/nasagon.svg"
+      },
+      "description": "any thing",
+      "fav": true,
+      "category": "men clothes"
     },
-    "description":"any thing",
-    "fav":true,
-    "category":"woman clothes"
+    {
+      "id": 5,
+      "name": "T-Shirt",
+      "price": 500,
+      "image": "/images/products/t-shirt.webp",
+      "vendor": {
+        "name": "nasagon",
+        "image": "images/vendors/nasagon.svg"
+      },
+      "description": "any thing",
+      "fav": true,
+      "category": "men clothes"
     },
-    "4":{
-    "id":1,
-    "name":"Jaket",
-    "price":500,
-    "image":"/images/products/jaket.jpg",
-    "vendor":{
-        "name":"nasagon",
-        "image":"images/vendors/nasagon.svg"
+    {
+      "id": 6,
+      "name": "Black T-Shirt",
+      "price": 500,
+      "image": "/images/products/t-shirt-black.webp",
+      "vendor": {
+        "name": "nasagon",
+        "image": "images/vendors/nasagon.svg"
+      },
+      "description": "any thing",
+      "fav": true,
+      "category": "men clothes"
     },
-    "description":"any thing",
-    "fav":true,
-    "category":"woman clothes"
+    {
+      "id": 7,
+      "name": "White T-Shirt",
+      "price": 4,
+      "image": "/images/products/t-shirt-white.webp",
+      "vendor": {
+        "name": "nasagon",
+        "image": "images/vendors/nasagon.svg"
+      },
+      "description": "any thing",
+      "fav": true,
+      "category": "men clothes"
     },
-    "5": {
-        "id":1,
-        "name":"Jaket",
-        "price":500,
-        "image":"/images/products/jaket.jpg",
-        "vendor":{
-          "name":"nasagon",
-          "image":"images/vendors/nasagon.svg"
-        },
-        "description":"any thing",
-        "fav":true,
-        "category":"woman clothes"
-      }
-}
-
-
+    {
+      "id": 8,
+      "name": "black_jaket",
+      "price": 1,
+      "image": "/images/products/jaket_black.png",
+      "vendor": {
+        "name": "nasagon",
+        "image": "images/vendors/nasagon.svg"
+      },
+      "description": "any thing",
+      "fav": true,
+      "category": "men clothes"
+    },
+    {
+      "id": 9,
+      "name": "T-Shirt Yellow",
+      "price": 3,
+      "image": "/images/products/t-shirt-yellow.webp",
+      "vendor": {
+        "name": "nasagon",
+        "image": "images/vendors/nasagon.svg"
+      },
+      "description": "any thing",
+      "fav": true,
+      "category": "men clothes"
+    },
+    {
+      "id": 10,
+      "name": "jeans",
+      "price": 200,
+      "image": "/images/products/jeans.jpg",
+      "vendor": {
+        "name": "nasagon",
+        "image": "images/vendors/nasagon.svg"
+      },
+      "description": "any thing",
+      "fav": true,
+      "category": "men clothes"
+    },
+    {
+      "id": "27c9",
+      "name": "",
+      "price": 0,
+      "category": "Men Clothes",
+      "description": null,
+      "image": null
+    },
+    {
+      "id": "e772",
+      "name": "ddd",
+      "price": 10,
+      "category": "Woman Clothes",
+      "description": "dddd",
+      "image": null
+    }
+  ]
 }
