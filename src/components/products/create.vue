@@ -18,7 +18,7 @@
             style="display: none;" 
           >
           <div 
-            class="image-preview" 
+            class="image-preview h-[10rem]" 
             @click="triggerUpload"
             style="width: 100%; cursor: pointer;"
           >
@@ -70,7 +70,7 @@ export default {
         price: null,
         category: 'Men Clothes',
         description: null,
-        image: null,
+        image: 'images/products/blose.png',
       },
     };
   },
@@ -87,6 +87,7 @@ export default {
       this.$refs.imageInput.click();
     },
     submit() {
+      this.product.image ='images/products/blose.png'
       this.$emit('add-product', this.product);
     },
   },
@@ -113,7 +114,7 @@ label {
   border: 1px dashed #ccc;
   padding: 10px;
   position: relative;
-  max-height: 9rem;
+  
 }
 .upload-btn {
   display: flex;

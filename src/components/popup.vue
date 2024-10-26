@@ -1,6 +1,6 @@
 <template>
-<div class="overlay h-full w-full bg-[#171717] absolute top-0 bottom-0 right-0 left-0 flex flex-col justify-center items-center">
-        <div class=" bg-white popup absolute rounded-[4px] md:w-[35rem] md:h-[37rem] sm:w-[35rem]  w-[96%]">
+<div class="overlay  w-full bg-[#171717] relative top-0 bottom-0 right-0 left-0 flex flex-col justify-center items-center">
+        <div class=" bg-white popup  rounded-[4px] md:w-[35rem] md:min-h-[37rem] sm:w-[35rem]  w-[96%]">
             <div class="popup-head w-full h-16 flex justify-between gap-9 items-center  px-5">
                 <div class="title">
                     <h2>{{title}}</h2>
