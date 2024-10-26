@@ -1,5 +1,5 @@
 import { createStore } from 'vuex';
-import axios from 'axios';
+// import axios from 'axios';
 
 const store = createStore({
   state: {
@@ -32,34 +32,37 @@ const store = createStore({
   actions: {
     async index({ commit }) {
       try {
-        const res = await axios.get(`http://localhost:3000/products`);
-        commit('INDEX', res.data);
+        // json server failde in production
+        // const res = await axios.get(`http://localhost:3000/products`);
+        const res =   JSON.parse(localStorage.getItem('products')) || [];
+
+        commit('INDEX', res);
       } catch (error) {
         console.log(error);
       }
     },
     async addProduct({ commit }, product) {
       try {
-        const res = await axios.post(`http://localhost:3000/products`, product);
-        commit('ADD_ITEM', res.data); 
+        // const res = await axios.post(`http://localhost:3000/products`, product);
+        commit('ADD_ITEM', product); 
       } catch (error) {
         console.error('Error adding product:', error);
       }
     },
     async updateProduct({ commit }, product) {
       try {
-        const res = await axios.put(`http://localhost:3000/products/${product.id}`, product);
-        commit('UPDATE_ITEM', res.data); 
+        // const res = await axios.put(`http://localhost:3000/products/${product.id}`, product);
+        commit('UPDATE_ITEM', product); 
       } catch (error) {
         console.error('Error updating product:', error);
       }
     },
     async removeItem({ commit }, id) {
-      await axios.delete(`http://localhost:3000/products/${id}`).then(() => {
+      // await axios.delete(`http://localhost:3000/products/${id}`).then(() => {
         commit('REMOVE_ITEM', id); 
-      }).catch(error => {
-        console.error('Error removing product:', error);
-      });
+      // }).catch(error => {
+      //   console.error('Error removing product:', error);
+      // });
     },
   }
 });
