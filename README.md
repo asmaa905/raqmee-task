@@ -27,7 +27,9 @@ npm run json-server
 ```
 npm run deploy
 ```
+#demo_link
+https://simpleeccomerce.netlify.app/
+```
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
-#demo link
-https://simpleeccomerce.netlify.app/
+
