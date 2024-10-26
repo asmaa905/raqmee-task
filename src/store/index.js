@@ -32,7 +32,7 @@ const store = createStore({
   actions: {
     async index({ commit }) {
       try {
-        const res = await axios.get(`http://localhost:3000/products`);
+        const res = await axios.get(`https://simpleeccomerce.netlify.app:3000/products`);
         commit('INDEX', res.data);
       } catch (error) {
         console.log(error);
@@ -40,7 +40,7 @@ const store = createStore({
     },
     async addProduct({ commit }, product) {
       try {
-        const res = await axios.post(`http://localhost:3000/products`, product);
+        const res = await axios.post(`https://simpleeccomerce.netlify.app:3000/products`, product);
         commit('ADD_ITEM', res.data); 
       } catch (error) {
         console.error('Error adding product:', error);
@@ -48,14 +48,14 @@ const store = createStore({
     },
     async updateProduct({ commit }, product) {
       try {
-        const res = await axios.put(`http://localhost:3000/products/${product.id}`, product);
+        const res = await axios.put(`https://simpleeccomerce.netlify.app:3000/products/${product.id}`, product);
         commit('UPDATE_ITEM', res.data); 
       } catch (error) {
         console.error('Error updating product:', error);
       }
     },
     async removeItem({ commit }, id) {
-      await axios.delete(`http://localhost:3000/products/${id}`).then(() => {
+      await axios.delete(`https://simpleeccomerce.netlify.app:3000/products/${id}`).then(() => {
         commit('REMOVE_ITEM', id); 
       }).catch(error => {
         console.error('Error removing product:', error);
