@@ -27,7 +27,8 @@ npm run json-server
 ```
 npm run deploy
 ```
-#demo_link
+#demo link
+```
 https://simpleeccomerce.netlify.app/
 ```
 ### Customize configuration
