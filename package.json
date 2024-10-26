@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "json-server": "json-server --watch --port 3000 db/products.json",
+    "json-server":"json-server --watch db/products.json --port 3000 --host 0.0.0.0 --cors",
+    "json-server-local": "json-server --watch --port 3000 db/products.json",
     "build:all": "concurrently \"npm run build\" \"npm run json-server\""
   },
   "dependencies": {
